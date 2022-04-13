@@ -1,34 +1,46 @@
 #include <stdio.h>
 
 /**
- * main - program that prints all possible different combinations of two digits
- * Numbers must be separated by ,followed by a space
- * The two digits must be different
- * 01 and 10 are considered the same combination of the two digits 0 and 1
- * Return: 0
+ * print_times_table - Prints the n times table
+ *
+ * @n: number times table (0 < n <= 15)
+ *
+ * Return: no return
  */
+void print_times_table(int n)
+{
+	int a, b, op;
 
-int main(void)
-{
-int n1 = 48;
-int n2;
-int com = 44;
-while (n1 <= 57)
-{
-n2 = n1 + 1;
-while (n2 <= 57)
-{
-putchar(n1);
-putchar(n2);
-if (n1 != 56 || n2 != 57)
-{
-putchar(com);
-putchar(32);
-}
-n2 += 1;
-}
-n1 += 1;
-}
-putchar('\n');
-return (0);
+	if (n >= 0 && n <= 15)
+	{
+		for (a = 0; a <= n; a++)
+		{
+			_putchar(48);
+			for (b = 1; b <= n; b++)
+			{
+				op = a * b;
+				_putchar(44);
+				_putchar(32);
+				if (op <= 9)
+				{
+					_putchar(32);
+					_putchar(32);
+					_putchar(op + 48);
+				}
+				else if (op <= 99)
+				{
+					_putchar(32);
+					_putchar((op / 10) + 48);
+					_putchar((op % 10) + 48);
+				}
+				else
+				{
+					_putchar(((op / 100) % 10) + 48);
+					_putchar(((op / 10) % 10) + 48);
+					_putchar((op % 10) + 48);
+				}
+			}
+			_putchar('\n');
+		}
+	}
 }
